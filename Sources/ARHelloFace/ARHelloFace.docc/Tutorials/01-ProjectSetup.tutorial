@@ -1,8 +1,9 @@
 @Tutorial(time: 10) {
-    @Intro(title: "프로젝트 설정 및 ARSCNView 배치") {
+    @Intro(title: "프로젝트 설정 및 ARSCNView를 SwiftUI로 감싸기") {
         ARKit Face Tracking을 사용하려면 TrueDepth 카메라를 지원하는
         기기(iPhone X 이상)가 필요합니다.
-        이 챕터에서는 Xcode 프로젝트를 만들고 ARSCNView를 화면에 배치합니다.
+        이 챕터에서는 SwiftUI 프로젝트를 만들고, UIKit 뷰인 `ARSCNView`를
+        `UIViewRepresentable`로 감싸 화면에 배치합니다.
 
         @Image(source: "chapter1-intro.png", alt: "Xcode 프로젝트 생성 화면")
     }
@@ -12,7 +13,7 @@
             새 iOS App 프로젝트를 생성하고,
             ARKit과 SceneKit을 사용할 수 있도록 설정합니다.
 
-            Interface는 **Storyboard**, Language는 **Swift**를 선택합니다.
+            Interface는 **SwiftUI**, Language는 **Swift**를 선택합니다.
 
             @Image(source: "s1-new-project.png", alt: "Xcode 새 프로젝트 다이얼로그")
         }
@@ -27,7 +28,7 @@
 
             @Step {
                 Product Name을 **ARHelloFace**로 입력하고,
-                Interface는 **Storyboard**, Language는 **Swift**로 설정합니다.
+                Interface는 **SwiftUI**, Language는 **Swift**로 설정합니다.
 
                 @Image(source: "s1-step2.png", alt: "프로젝트 이름 설정")
             }
@@ -42,36 +43,36 @@
         }
     }
 
-    @Section(title: "ARSCNView 추가") {
+    @Section(title: "ARSCNView를 UIViewRepresentable로 감싸기") {
         @ContentAndMedia {
-            `ARSCNView`는 ARKit과 SceneKit을 결합한 뷰입니다.
-            카메라 피드를 배경으로 보여주면서
-            3D 오브젝트를 그 위에 렌더링합니다.
+            `ARSCNView`는 ARKit과 SceneKit을 결합한 **UIKit** 뷰입니다.
+            카메라 피드를 배경으로 보여주면서 3D 오브젝트를 그 위에 렌더링합니다.
+            SwiftUI에서 UIKit 뷰를 쓰려면 `UIViewRepresentable`로 감싸야 합니다.
 
             @Image(source: "s1-arscnview.png", alt: "ARSCNView 배치 화면")
         }
 
         @Steps {
             @Step {
-                `Main.storyboard`를 열고
-                View Controller의 루트 뷰 위에 `ARSCNView`를 추가합니다.
-                Auto Layout으로 상하좌우 모두 0으로 설정해 화면 전체를 채웁니다.
+                새 Swift 파일 `ARFaceView.swift`를 만들고
+                `UIViewRepresentable`을 채택하는 `ARFaceView` 구조체를 작성합니다.
+                `makeUIView(context:)`에서 `ARSCNView`를 생성해 반환합니다.
 
-                @Image(source: "s1-step3.png", alt: "ARSCNView 스토리보드 배치")
+                @Code(name: "ARFaceView.swift", file: "s1-arface-view-start.swift")
             }
 
             @Step {
-                `ViewController.swift`에 `ARSCNView` IBOutlet을 연결합니다.
-                ARKit과 SceneKit 프레임워크를 임포트합니다.
-
-                @Code(name: "ViewController.swift", file: "s1-viewcontroller-start.swift")
-            }
-
-            @Step {
-                `viewDidLoad()`에서 ARSCNView의 기본 속성을 설정합니다.
+                `makeUIView(context:)`에서 `ARSCNView`의 기본 속성을 설정합니다.
                 통계 표시와 자동 조명을 켜서 개발 중 디버깅을 쉽게 합니다.
 
-                @Code(name: "ViewController.swift", file: "s1-viewcontroller-setup.swift")
+                @Code(name: "ARFaceView.swift", file: "s1-arface-view-setup.swift")
+            }
+
+            @Step {
+                `ContentView`에서 `ARFaceView`를 화면 전체에 배치합니다.
+                `ignoresSafeArea()`로 카메라 화면이 안전 영역까지 채우게 합니다.
+
+                @Code(name: "ContentView.swift", file: "s1-content-view.swift")
             }
         }
     }

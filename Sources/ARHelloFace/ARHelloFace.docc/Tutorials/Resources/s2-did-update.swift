@@ -1,4 +1,5 @@
 // s2-did-update.swift
+// Coordinator 클래스 안에 추가하는 델리게이트 메서드입니다.
 /// ARKit이 매 프레임마다 앵커 transform을 자동으로 node에 동기화합니다.
 /// 추가 처리가 필요한 경우 이 메서드에서 구현합니다.
 func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {

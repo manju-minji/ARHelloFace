@@ -1,0 +1,94 @@
+@Tutorial(time: 15) {
+    @Intro(title: "SCNText로 Hello 텍스트 띄우기") {
+        이제 얼굴 위에 "Hello" 텍스트를 3D로 표시합니다.
+        SceneKit의 `SCNText`로 3D 텍스트 지오메트리를 만들고,
+        얼굴 앵커 노드의 자식으로 추가해 얼굴을 따라다니게 합니다.
+
+        @Image(source: "chapter3-intro.png", alt: "얼굴 위에 Hello가 떠있는 완성 화면")
+    }
+
+    @Section(title: "SCNText 노드 만들기") {
+        @ContentAndMedia {
+            `SCNText`는 SceneKit에서 제공하는 3D 텍스트 지오메트리입니다.
+            글꼴, 깊이(두께), 크기를 자유롭게 설정할 수 있습니다.
+
+            @Image(source: "s3-scntext.png", alt: "SCNText 속성 설명 다이어그램")
+        }
+
+        @Steps {
+            @Step {
+                `makeHelloNode()` 헬퍼 함수를 작성합니다.
+                `SCNText`를 생성하고 string에 `"Hello 👋"`를 설정합니다.
+
+                @Code(name: "ViewController.swift", file: "s3-make-hello-node.swift")
+            }
+
+            @Step {
+                텍스트 머티리얼을 설정해 흰색으로 빛나게 만듭니다.
+                `emission` 색상을 흰색으로 설정하면 조명에 관계없이 밝게 보입니다.
+
+                @Code(name: "ViewController.swift", file: "s3-text-material.swift")
+            }
+
+            @Step {
+                텍스트의 크기를 조정합니다. `SCNText`는 기본 크기가 크기 때문에
+                노드의 `scale`을 `(0.002, 0.002, 0.002)`로 줄입니다.
+
+                @Code(name: "ViewController.swift", file: "s3-text-scale.swift")
+            }
+        }
+    }
+
+    @Section(title: "얼굴 위에 텍스트 위치 잡기") {
+        @ContentAndMedia {
+            ARKit의 좌표계에서 얼굴 앵커의 원점은 얼굴 중앙(코 끝 부근)입니다.
+            텍스트를 머리 위에 표시하려면 Y축 방향으로 이동시켜야 합니다.
+
+            @Image(source: "s3-coordinate.png", alt: "ARKit 얼굴 좌표계 설명")
+        }
+
+        @Steps {
+            @Step {
+                `SCNNode`의 `position`을 설정해 얼굴 중앙보다 위쪽으로 이동시킵니다.
+                `position.y = 0.15`로 설정하면 얼굴 위 15cm 위치에 텍스트가 뜹니다.
+
+                @Code(name: "ViewController.swift", file: "s3-text-position.swift")
+            }
+
+            @Step {
+                텍스트가 항상 카메라를 바라보도록 `SCNBillboardConstraint`를 추가합니다.
+                이렇게 하면 얼굴이 회전해도 텍스트가 정면을 향합니다.
+
+                @Code(name: "ViewController.swift", file: "s3-billboard.swift")
+            }
+
+            @Step {
+                `renderer(_:nodeFor:)`에서 만든 노드에 `makeHelloNode()`를 자식으로 추가합니다.
+                이제 얼굴이 감지될 때마다 "Hello" 텍스트가 머리 위에 나타납니다.
+
+                @Code(name: "ViewController.swift", file: "s3-final.swift")
+            }
+        }
+    }
+
+    @Section(title: "완성 코드 확인") {
+        @ContentAndMedia {
+            모든 단계를 합친 최종 `ViewController.swift` 전체 코드입니다.
+            실제 기기(iPhone X 이상)에서 빌드해 테스트해보세요.
+
+            > Important: ARKit Face Tracking은 시뮬레이터에서 동작하지 않습니다.
+            > TrueDepth 카메라가 있는 실기기가 필요합니다.
+
+            @Image(source: "s3-final-result.png", alt: "앱 실행 완성 화면")
+        }
+
+        @Steps {
+            @Step {
+                완성된 `ViewController.swift` 전체 코드입니다.
+                앞서 단계별로 작성한 모든 코드가 통합되어 있습니다.
+
+                @Code(name: "ViewController.swift", file: "s3-complete.swift")
+            }
+        }
+    }
+}

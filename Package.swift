@@ -9,8 +9,7 @@ let package = Package(
     targets: [
         .target(
             name: "ARHelloFace",
-            path: "Sources/ARHelloFace",
-            sources: ["ARHelloFace.swift"]
+            path: "Sources/ARHelloFace"
         )
     ]
 )

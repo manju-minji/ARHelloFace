@@ -1,4 +1,0 @@
-module ARHelloFace {
-header "ARHelloFace-Swift.h"
-export *
-}

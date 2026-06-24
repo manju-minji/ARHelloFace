@@ -5,6 +5,49 @@
 	<key>logFormatVersion</key>
 	<integer>12</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>023C98F7-E66A-47F9-BC57-035F64E5CBA4</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>023C98F7-E66A-47F9-BC57-035F64E5CBA4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>17</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>ARHelloFace</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>ARHelloFace-Package</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace ARHelloFace with scheme ARHelloFace-Package</string>
+			<key>timeStartedRecording</key>
+			<real>803975150.38479304</real>
+			<key>timeStoppedRecording</key>
+			<real>803975151.45279002</real>
+			<key>title</key>
+			<string>Building workspace ARHelloFace with scheme ARHelloFace-Package</string>
+			<key>uniqueIdentifier</key>
+			<string>023C98F7-E66A-47F9-BC57-035F64E5CBA4</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

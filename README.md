@@ -1,13 +1,14 @@
 # ARHelloFace — DocC 튜토리얼
 
 ARKit Face Tracking으로 사람 머리 위에 "Hello 👋" 텍스트를 띄우는 예제 앱의 **DocC 튜토리얼** 소스입니다.
+**SwiftUI** 앱에서 `UIViewRepresentable`로 `ARSCNView`를 감싸 사용합니다.
 
 ## 튜토리얼 구성
 
 | 챕터 | 파일 | 내용 |
 |------|------|------|
-| 1 | `01-ProjectSetup.tutorial` | Xcode 프로젝트 생성, ARSCNView 배치 |
-| 2 | `02-FaceTracking.tutorial` | ARFaceTrackingConfiguration, ARSCNViewDelegate |
+| 1 | `01-ProjectSetup.tutorial` | Xcode 프로젝트 생성, ARSCNView를 UIViewRepresentable로 감싸기 |
+| 2 | `02-FaceTracking.tutorial` | ARFaceTrackingConfiguration, Coordinator(ARSCNViewDelegate) |
 | 3 | `03-HelloText.tutorial` | SCNText 생성, Billboard, 완성 코드 |
 
 ## 필요 환경
@@ -52,22 +53,23 @@ ARHelloFace/
             ├── 02-FaceTracking.tutorial
             ├── 03-HelloText.tutorial
             └── Resources/               ← 각 Step의 코드 파일
-                ├── s1-viewcontroller-start.swift
-                ├── s1-viewcontroller-setup.swift
+                ├── s1-arface-view-start.swift   ← UIViewRepresentable 스켈레톤
+                ├── s1-arface-view-setup.swift   ← makeUIView 기본 설정
+                ├── s1-content-view.swift        ← ContentView 호스팅
                 ├── s1-info-plist.xml
-                ├── s2-check-support.swift
-                ├── s2-run-session.swift
-                ├── s2-pause-session.swift
-                ├── s2-delegate-adopt.swift
+                ├── s2-check-support.swift       ← 지원 여부 분기 (ContentView)
+                ├── s2-run-session.swift         ← makeUIView에서 세션 시작
+                ├── s2-coordinator-adopt.swift   ← Coordinator + delegate 연결
                 ├── s2-node-for-anchor.swift
                 ├── s2-did-update.swift
+                ├── s2-pause-session.swift       ← dismantleUIView로 세션 정리
                 ├── s3-make-hello-node.swift
                 ├── s3-text-material.swift
                 ├── s3-text-scale.swift
                 ├── s3-text-position.swift
                 ├── s3-billboard.swift
                 ├── s3-final.swift
-                └── s3-complete.swift     ← 최종 완성 코드
+                └── s3-complete.swift     ← 최종 완성 코드 (App + ContentView + ARFaceView)
 ```
 
 ## 이미지 리소스 추가
@@ -85,5 +87,7 @@ ARHelloFace/
 
 ## 완성 코드
 
-`Tutorials/Resources/s3-complete.swift` 파일이 최종 완성된 `ViewController.swift`입니다.
-Xcode 프로젝트에 이 파일을 복사해 실기기에서 바로 테스트할 수 있습니다.
+`Tutorials/Resources/s3-complete.swift` 파일이 최종 완성된 `ARFaceView.swift`입니다.
+`@main App` 진입점, `ContentView`, `ARFaceView`(UIViewRepresentable)와
+`Coordinator`(ARSCNViewDelegate)가 한 파일에 들어 있습니다.
+Xcode SwiftUI 프로젝트에 이 코드를 복사해 실기기에서 바로 테스트할 수 있습니다.

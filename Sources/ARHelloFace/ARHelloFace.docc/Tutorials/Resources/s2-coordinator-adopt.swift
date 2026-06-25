@@ -1,16 +1,18 @@
+// s2-coordinator-adopt.swift
 import SwiftUI
 import ARKit
 import SceneKit
 
 struct ARFaceView: UIViewRepresentable {
 
+    // Coordinator를 생성합니다. UIKit의 delegate 역할을 담당합니다.
     func makeCoordinator() -> Coordinator {
         Coordinator()
     }
 
     func makeUIView(context: Context) -> ARSCNView {
         let sceneView = ARSCNView()
-        sceneView.delegate = context.coordinator
+        sceneView.delegate = context.coordinator  // delegate 연결
         sceneView.showsStatistics = true
         sceneView.autoenablesDefaultLighting = true
 
@@ -22,21 +24,8 @@ struct ARFaceView: UIViewRepresentable {
 
     func updateUIView(_ uiView: ARSCNView, context: Context) {}
 
-    static func dismantleUIView(_ uiView: ARSCNView, coordinator: Coordinator) {
-        uiView.session.pause()
-    }
-
-    // MARK: - Coordinator (ARSCNViewDelegate)
-
+    // ARSCNViewDelegate를 채택하는 Coordinator
+    // SwiftUI 구조체는 delegate가 될 수 없으므로 NSObject 클래스로 분리합니다.
     class Coordinator: NSObject, ARSCNViewDelegate {
-
-        /// 새 앵커가 감지될 때 호출 - ARFaceAnchor이면 노드를 생성해 반환
-        func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-            guard anchor is ARFaceAnchor else { return nil }
-
-            let faceNode = SCNNode()
-            // 다음 챕터에서 이 노드에 "Hello" 텍스트를 추가합니다
-            return faceNode
-        }
     }
 }

@@ -2,13 +2,15 @@
     @Intro(title: "ARKit으로 Hello 띄우기") {
         ARKit의 Face Tracking 기능을 활용해 카메라로 사람 얼굴을 인식하고,
         머리 위에 "Hello" 텍스트를 증강현실로 표시하는 앱을 단계별로 만들어봅니다.
+        SwiftUI 앱에서 `UIViewRepresentable`로 ARSCNView를 감싸 사용합니다.
 
         @Image(source: "ar-hero.png", alt: "ARKit 얼굴 인식 앱 완성 화면")
     }
 
     @Chapter(name: "프로젝트 시작하기") {
-        ARKit Face Tracking 앱의 기반을 구성합니다.
-        Xcode 프로젝트 설정부터 ARSCNView 배치까지 진행합니다.
+        SwiftUI 기반 ARKit Face Tracking 앱의 기반을 구성합니다.
+        Xcode 프로젝트 설정부터, ARSCNView를 UIViewRepresentable로
+        감싸 화면에 배치하는 것까지 진행합니다.
 
         @Image(source: "chapter1.png", alt: "프로젝트 설정 화면")
 
@@ -17,7 +19,7 @@
 
     @Chapter(name: "얼굴 인식 구현하기") {
         ARFaceTrackingConfiguration을 설정하고
-        ARSCNViewDelegate로 얼굴 앵커를 추적합니다.
+        Coordinator(ARSCNViewDelegate)로 얼굴 앵커를 추적합니다.
 
         @Image(source: "chapter2.png", alt: "얼굴 인식 구현 화면")
 

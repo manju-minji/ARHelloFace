@@ -1,42 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#97A1B2"/>
-    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#ECEFF7"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1F2A44" flood-opacity="0.14"/>
+    </filter>
   </defs>
-  <rect x="0" y="0" width="960" height="560" rx="18" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
-  <text x="480" y="56" text-anchor="middle" font-size="28" font-weight="700" fill="#16202E">SCNText 주요 속성</text>
-  <text x="480" y="88" text-anchor="middle" font-size="16" fill="#6B7689">3D 텍스트 지오메트리의 글꼴 · 깊이 · 크기를 설정합니다</text>
+  <rect x="0" y="0" width="800" height="480" rx="28" fill="url(#bg)"/>
 
-  <!-- 3D extruded "Hello" text illustration -->
-  <!-- depth/extrusion shadow layers -->
-  <g>
-    <!-- back face (depth) -->
-    <text x="372" y="292" font-size="120" font-weight="800" fill="#B9A6FB">Hello</text>
-    <!-- connecting depth via slight offset stack -->
-    <text x="368" y="288" font-size="120" font-weight="800" fill="#9F86F7">Hello</text>
-    <text x="364" y="284" font-size="120" font-weight="800" fill="#8468F2">Hello</text>
-    <!-- front face -->
-    <text x="360" y="280" font-size="120" font-weight="800" fill="#5B3FE0">Hello</text>
+  <!-- 3D extruded "Hello" -->
+  <g filter="url(#soft)" font-size="128" font-weight="800">
+    <text x="218" y="296" fill="#C7CEF6">Hello</text>
+    <text x="212" y="290" fill="#A9B2F0">Hello</text>
+    <text x="206" y="284" fill="#8B96EA">Hello</text>
+    <text x="200" y="278" fill="#6366F1">Hello</text>
   </g>
 
-  <!-- 1) font -->
-  <line x1="430" y1="180" x2="500" y2="120" stroke="#97A1B2" stroke-width="2" marker-start="url(#arrow)"/>
-  <rect x="500" y="92" width="230" height="58" rx="10" fill="#FFFFFF" stroke="#2563EB" stroke-width="2"/>
-  <text x="615" y="118" text-anchor="middle" font-size="15" font-weight="700" fill="#2563EB">글꼴 · font</text>
-  <text x="615" y="138" text-anchor="middle" font-size="12" fill="#6B7689">SCNText(string:, extrusionDepth:)</text>
-
-  <!-- 2) extrusion depth -->
-  <line x1="700" y1="250" x2="770" y2="250" stroke="#97A1B2" stroke-width="2" marker-start="url(#arrow)"/>
-  <rect x="770" y="222" width="170" height="58" rx="10" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="2"/>
-  <text x="855" y="248" text-anchor="middle" font-size="15" font-weight="700" fill="#5B3FE0">깊이(두께)</text>
-  <text x="855" y="268" text-anchor="middle" font-size="12" fill="#6B7689">extrusionDepth</text>
-
-  <!-- 3) scale -->
-  <line x1="500" y1="300" x2="430" y2="360" stroke="#97A1B2" stroke-width="2" marker-start="url(#arrow)"/>
-  <rect x="230" y="360" width="300" height="64" rx="10" fill="#FFFFFF" stroke="#16A34A" stroke-width="2"/>
-  <text x="380" y="386" text-anchor="middle" font-size="15" font-weight="700" fill="#15803D">크기 · node.scale</text>
-  <text x="380" y="408" text-anchor="middle" font-size="12" fill="#6B7689">(0.002, 0.002, 0.002) 로 축소</text>
-
-  <text x="480" y="500" text-anchor="middle" font-size="14" fill="#6B7689">SCNText는 기본 크기가 매우 크므로 <tspan font-weight="600" fill="#15803D">scale</tspan> 로 줄여야 합니다</text>
+  <!-- subtle ground reflection -->
+  <ellipse cx="400" cy="360" rx="210" ry="16" fill="#6366F1" opacity="0.08"/>
 </svg>

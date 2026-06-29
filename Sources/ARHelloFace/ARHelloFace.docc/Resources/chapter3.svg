@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+  <rect x="0" y="0" width="760" height="520" rx="22" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
+
+  <!-- chapter badge -->
+  <rect x="40" y="40" width="150" height="48" rx="24" fill="#E4F7EC"/>
+  <circle cx="64" cy="64" r="13" fill="#16A34A"/>
+  <text x="64" y="69" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">3</text>
+  <text x="86" y="70" font-size="16" font-weight="700" fill="#15803D">CHAPTER</text>
+
+  <!-- floating Hello bubble above head -->
+  <g>
+    <rect x="266" y="132" width="228" height="74" rx="18" fill="#EFEAFE" stroke="#7C5CFC" stroke-width="2.5"/>
+    <text x="380" y="182" text-anchor="middle" font-size="34" font-weight="800" fill="#5B3FE0">Hello 👋</text>
+    <path d="M364 206 L380 230 L396 206 Z" fill="#EFEAFE" stroke="#7C5CFC" stroke-width="2.5"/>
+  </g>
+
+  <!-- billboard / up indicator -->
+  <line x1="540" y1="300" x2="540" y2="244" stroke="#16A34A" stroke-width="3" stroke-dasharray="6 5"/>
+  <path d="M540 232 L548 248 L532 248 Z" fill="#16A34A"/>
+  <text x="560" y="276" font-size="13" font-weight="600" fill="#15803D">y +0.15</text>
+
+  <!-- face -->
+  <ellipse cx="380" cy="332" rx="92" ry="108" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2.5"/>
+  <circle cx="350" cy="314" r="8" fill="#38445A"/>
+  <circle cx="410" cy="314" r="8" fill="#38445A"/>
+  <path d="M352 372 Q380 396 408 372" fill="none" stroke="#38445A" stroke-width="3.5" stroke-linecap="round"/>
+
+  <text x="380" y="492" text-anchor="middle" font-size="26" font-weight="800" fill="#16202E">Hello 텍스트 표시하기</text>
+</svg>

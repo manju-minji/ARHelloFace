@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#97A1B2"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="560" rx="18" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
+  <text x="480" y="56" text-anchor="middle" font-size="28" font-weight="700" fill="#16202E">ARFace Tracking 데이터 흐름</text>
+  <text x="480" y="88" text-anchor="middle" font-size="16" fill="#6B7689">TrueDepth 카메라가 매 프레임 얼굴 데이터를 ARFaceAnchor로 전달합니다</text>
+
+  <!-- Box A: camera -->
+  <rect x="40" y="150" width="250" height="120" rx="14" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <circle cx="100" cy="200" r="20" fill="#E7EEFD" stroke="#2563EB" stroke-width="2"/>
+  <circle cx="100" cy="200" r="9" fill="#2563EB"/>
+  <text x="165" y="196" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">TrueDepth</text>
+  <text x="165" y="220" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">전면 카메라</text>
+  <text x="165" y="248" text-anchor="middle" font-size="13" fill="#6B7689">깊이 + 영상 스캔</text>
+
+  <!-- arrow A->B -->
+  <line x1="298" y1="210" x2="352" y2="210" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Box B: session -->
+  <rect x="360" y="150" width="250" height="120" rx="14" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="485" y="192" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">ARSession</text>
+  <text x="485" y="216" text-anchor="middle" font-size="14" fill="#38445A">ARFaceTracking</text>
+  <text x="485" y="236" text-anchor="middle" font-size="14" fill="#38445A">Configuration</text>
+
+  <!-- arrow B->C -->
+  <line x1="618" y1="210" x2="672" y2="210" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Box C: anchor -->
+  <rect x="680" y="150" width="240" height="120" rx="14" fill="#EFEAFE" stroke="#7C5CFC" stroke-width="2.5"/>
+  <text x="800" y="200" text-anchor="middle" font-size="20" font-weight="700" fill="#5B3FE0">ARFaceAnchor</text>
+  <text x="800" y="232" text-anchor="middle" font-size="13" fill="#6B5BB0">매 프레임 갱신</text>
+
+  <!-- connectors anchor -> chips -->
+  <line x1="800" y1="270" x2="800" y2="320" stroke="#97A1B2" stroke-width="2"/>
+  <line x1="300" y1="320" x2="800" y2="320" stroke="#97A1B2" stroke-width="2"/>
+  <line x1="300" y1="320" x2="300" y2="360" stroke="#97A1B2" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="320" x2="550" y2="360" stroke="#97A1B2" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="800" y1="320" x2="800" y2="360" stroke="#97A1B2" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- chips -->
+  <rect x="195" y="368" width="210" height="92" rx="12" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="300" y="404" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">위치</text>
+  <text x="300" y="430" text-anchor="middle" font-size="13" fill="#6B7689">transform (4x4)</text>
+  <text x="300" y="450" text-anchor="middle" font-size="12" fill="#9AA3B2">얼굴의 3D 위치·자세</text>
+
+  <rect x="445" y="368" width="210" height="92" rx="12" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="550" y="404" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">방향</text>
+  <text x="550" y="430" text-anchor="middle" font-size="13" fill="#6B7689">orientation</text>
+  <text x="550" y="450" text-anchor="middle" font-size="12" fill="#9AA3B2">고개 회전·기울기</text>
+
+  <rect x="695" y="368" width="210" height="92" rx="12" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="800" y="404" text-anchor="middle" font-size="18" font-weight="600" fill="#16202E">표정</text>
+  <text x="800" y="430" text-anchor="middle" font-size="13" fill="#6B7689">blendShapes</text>
+  <text x="800" y="450" text-anchor="middle" font-size="12" fill="#9AA3B2">눈·입 등 52개 계수</text>
+
+  <text x="480" y="510" text-anchor="middle" font-size="14" fill="#6B7689">이 챕터에서는 <tspan font-weight="600" fill="#5B3FE0">위치(transform)</tspan> 데이터를 사용해 노드를 얼굴에 붙입니다</text>
+</svg>

@@ -13,7 +13,7 @@
             `SCNText`는 SceneKit에서 제공하는 3D 텍스트 지오메트리입니다.
             글꼴, 깊이(두께), 크기를 자유롭게 설정할 수 있습니다.
 
-            @Image(source: "s3-scntext.png", alt: "SCNText 속성 설명 다이어그램")
+            @Image(source: "s3-scntext.svg", alt: "SCNText 속성 설명 다이어그램")
         }
 
         @Steps {
@@ -45,7 +45,7 @@
             ARKit의 좌표계에서 얼굴 앵커의 원점은 얼굴 중앙(코 끝 부근)입니다.
             텍스트를 머리 위에 표시하려면 Y축 방향으로 이동시켜야 합니다.
 
-            @Image(source: "s3-coordinate.png", alt: "ARKit 얼굴 좌표계 설명")
+            @Image(source: "s3-coordinate.svg", alt: "ARKit 얼굴 좌표계 설명")
         }
 
         @Steps {

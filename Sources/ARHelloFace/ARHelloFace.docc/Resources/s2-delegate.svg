@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#97A1B2"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="560" rx="18" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
+  <text x="480" y="56" text-anchor="middle" font-size="28" font-weight="700" fill="#16202E">Coordinator로 delegate 연결</text>
+  <text x="480" y="88" text-anchor="middle" font-size="16" fill="#6B7689">값 타입인 SwiftUI 뷰는 delegate가 될 수 없어 클래스인 Coordinator가 대신합니다</text>
+
+  <!-- SwiftUI struct (value type) -->
+  <rect x="50" y="160" width="270" height="150" rx="14" fill="#E7EEFD" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="185" y="194" text-anchor="middle" font-size="13" font-weight="700" fill="#2563EB">SwiftUI · 값 타입(struct)</text>
+  <text x="185" y="228" text-anchor="middle" font-size="19" font-weight="700" fill="#16202E">ARFaceView</text>
+  <text x="185" y="252" text-anchor="middle" font-size="14" fill="#38445A">: UIViewRepresentable</text>
+  <text x="185" y="286" text-anchor="middle" font-size="13" fill="#6B7689">makeCoordinator()</text>
+
+  <!-- makeCoordinator arrow -->
+  <line x1="320" y1="235" x2="404" y2="235" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="362" y="223" text-anchor="middle" font-size="12" fill="#6B7689">생성</text>
+
+  <!-- Coordinator (reference type) -->
+  <rect x="412" y="150" width="290" height="170" rx="14" fill="#EFEAFE" stroke="#7C5CFC" stroke-width="2.5"/>
+  <text x="557" y="184" text-anchor="middle" font-size="13" font-weight="700" fill="#5B3FE0">참조 타입(class)</text>
+  <text x="557" y="216" text-anchor="middle" font-size="19" font-weight="700" fill="#16202E">Coordinator</text>
+  <text x="557" y="240" text-anchor="middle" font-size="13" fill="#38445A">: NSObject, ARSCNViewDelegate</text>
+  <line x1="432" y1="256" x2="682" y2="256" stroke="#D5C9F5" stroke-width="1.5"/>
+  <text x="557" y="280" text-anchor="middle" font-size="13" fill="#6B5BB0">renderer(_:nodeFor:)</text>
+  <text x="557" y="302" text-anchor="middle" font-size="13" fill="#6B5BB0">renderer(_:didUpdate:for:)</text>
+
+  <!-- ARSCNView -->
+  <rect x="730" y="160" width="180" height="150" rx="14" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="820" y="200" text-anchor="middle" font-size="18" font-weight="700" fill="#16202E">ARSCNView</text>
+  <text x="820" y="226" text-anchor="middle" font-size="13" fill="#6B7689">UIKit 뷰</text>
+  <text x="820" y="262" text-anchor="middle" font-size="13" fill="#38445A">.delegate =</text>
+  <text x="820" y="282" text-anchor="middle" font-size="13" fill="#38445A">context.coordinator</text>
+
+  <!-- delegate assignment arrow (coordinator <- view as delegate) -->
+  <line x1="730" y1="235" x2="706" y2="235" stroke="#7C5CFC" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- callback flow back -->
+  <path d="M 820 310 L 820 380 L 557 380" fill="none" stroke="#16A34A" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="700" y="402" text-anchor="middle" font-size="13" font-weight="600" fill="#15803D">얼굴 감지 시 콜백 호출</text>
+
+  <!-- bottom explanation card -->
+  <rect x="50" y="430" width="860" height="80" rx="12" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="1.5"/>
+  <text x="480" y="465" text-anchor="middle" font-size="15" font-weight="600" fill="#16202E">delegate 메서드는 ARSCNView가 Coordinator에게 호출합니다</text>
+  <text x="480" y="490" text-anchor="middle" font-size="13" fill="#6B7689">앵커가 추가되면 nodeFor 가, 매 프레임 갱신되면 didUpdate 가 실행됩니다</text>
+</svg>

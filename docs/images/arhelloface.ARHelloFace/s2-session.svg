@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#97A1B2"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="960" height="560" rx="18" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
+  <text x="480" y="56" text-anchor="middle" font-size="28" font-weight="700" fill="#16202E">AR 세션 시작 흐름</text>
+  <text x="480" y="88" text-anchor="middle" font-size="16" fill="#6B7689">지원 여부를 먼저 확인한 뒤 세션을 실행합니다</text>
+
+  <!-- Step 1: support check (decision) -->
+  <rect x="60" y="150" width="260" height="120" rx="14" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="190" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#2563EB">STEP 1</text>
+  <text x="190" y="214" text-anchor="middle" font-size="17" font-weight="600" fill="#16202E">지원 여부 확인</text>
+  <text x="190" y="240" text-anchor="middle" font-size="13" fill="#6B7689">ARFaceTracking</text>
+  <text x="190" y="258" text-anchor="middle" font-size="13" fill="#6B7689">Configuration.isSupported</text>
+
+  <!-- arrow 1->2 (지원) -->
+  <line x1="328" y1="210" x2="392" y2="210" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="360" y="198" text-anchor="middle" font-size="13" font-weight="600" fill="#16A34A">지원 O</text>
+
+  <!-- Step 2: create config -->
+  <rect x="400" y="150" width="250" height="120" rx="14" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2"/>
+  <text x="525" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#2563EB">STEP 2</text>
+  <text x="525" y="214" text-anchor="middle" font-size="17" font-weight="600" fill="#16202E">Configuration 생성</text>
+  <text x="525" y="244" text-anchor="middle" font-size="13" fill="#6B7689">ARFaceTrackingConfiguration()</text>
+
+  <!-- arrow 2->3 -->
+  <line x1="658" y1="210" x2="722" y2="210" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: run -->
+  <rect x="730" y="150" width="180" height="120" rx="14" fill="#E7EEFD" stroke="#2563EB" stroke-width="2.5"/>
+  <text x="820" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#2563EB">STEP 3</text>
+  <text x="820" y="214" text-anchor="middle" font-size="17" font-weight="600" fill="#16202E">세션 실행</text>
+  <text x="820" y="244" text-anchor="middle" font-size="14" fill="#1E4FB8" font-weight="600">session.run(config)</text>
+
+  <!-- branch: unsupported -->
+  <line x1="190" y1="270" x2="190" y2="350" stroke="#97A1B2" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="232" y="312" text-anchor="middle" font-size="13" font-weight="600" fill="#E5484D">지원 X</text>
+
+  <rect x="60" y="358" width="260" height="92" rx="14" fill="#FDECEC" stroke="#E5484D" stroke-width="2"/>
+  <text x="190" y="394" text-anchor="middle" font-size="17" font-weight="600" fill="#C0392B">미지원 안내 화면</text>
+  <text x="190" y="420" text-anchor="middle" font-size="13" fill="#B5564E">SwiftUI if 분기로</text>
+  <text x="190" y="438" text-anchor="middle" font-size="13" fill="#B5564E">대체 뷰 표시</text>
+
+  <!-- success note -->
+  <rect x="730" y="300" width="180" height="70" rx="12" fill="#E4F7EC" stroke="#16A34A" stroke-width="2"/>
+  <text x="820" y="332" text-anchor="middle" font-size="14" font-weight="600" fill="#15803D">얼굴 추적 시작 ✓</text>
+  <text x="820" y="354" text-anchor="middle" font-size="12" fill="#3C8A5C">전면 카메라 활성화</text>
+  <line x1="820" y1="270" x2="820" y2="300" stroke="#16A34A" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="480" y="510" text-anchor="middle" font-size="14" fill="#6B7689">실기기(iPhone X 이상)에서만 <tspan font-weight="600" fill="#2563EB">isSupported</tspan> 가 true 입니다</text>
+</svg>

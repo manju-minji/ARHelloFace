@@ -56,14 +56,37 @@ trap 'rm -rf "$TMP"' EXIT
 cp -R "$CATALOG" "$TMP/ARHelloFace.docc"
 cp -R "$SYMBOL_GRAPH" "$TMP/sg"
 
-xcrun docc convert "$TMP/ARHelloFace.docc" \
-  --fallback-display-name "$DISPLAY_NAME" \
-  --fallback-bundle-identifier "$BUNDLE_ID" \
-  --additional-symbol-graph-dir "$TMP/sg" \
-  --emit-lmdb-index \
-  --transform-for-static-hosting \
-  --hosting-base-path "$HOSTING_BASE_PATH" \
-  --output-path "$TMP/out"
+# 기대 튜토리얼 개수 = Tutorials/ 안의 .tutorial 챕터 파일 수
+EXPECTED_TUTORIALS="$(find "$CATALOG/Tutorials" -maxdepth 1 -name '*.tutorial' | wc -l | tr -d ' ')"
+
+# DocC는 간헐적으로 튜토리얼 일부를 조용히 누락한다(에러 없이). 개수를
+# 검증하고 부족하면 재시도한다.
+MAX_TRIES=4
+BUILT=0
+for try in $(seq 1 "$MAX_TRIES"); do
+  rm -rf "$TMP/out"
+  xcrun docc convert "$TMP/ARHelloFace.docc" \
+    --fallback-display-name "$DISPLAY_NAME" \
+    --fallback-bundle-identifier "$BUNDLE_ID" \
+    --additional-symbol-graph-dir "$TMP/sg" \
+    --emit-lmdb-index \
+    --transform-for-static-hosting \
+    --hosting-base-path "$HOSTING_BASE_PATH" \
+    --output-path "$TMP/out"
+
+  GOT="$(find "$TMP/out/data/tutorials" -mindepth 2 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')"
+  if [[ "$GOT" -ge "$EXPECTED_TUTORIALS" ]]; then
+    echo "  튜토리얼 $GOT/$EXPECTED_TUTORIALS 생성 확인 (시도 $try)"
+    BUILT=1
+    break
+  fi
+  echo "  ⚠ 튜토리얼 $GOT/$EXPECTED_TUTORIALS — DocC가 일부를 누락함. 재시도($try/$MAX_TRIES)…"
+done
+
+if [[ "$BUILT" -ne 1 ]]; then
+  echo "✖ $MAX_TRIES회 시도 후에도 튜토리얼이 모두 생성되지 않았습니다. docs/ 를 변경하지 않고 중단합니다." >&2
+  exit 1
+fi
 
 # ── 3) docs/ 교체 ─────────────────────────────────────────────────
 echo "▶ [3/4] docs/ 교체…"

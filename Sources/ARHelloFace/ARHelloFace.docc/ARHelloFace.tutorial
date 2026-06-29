@@ -12,7 +12,7 @@
         Xcode 프로젝트 설정부터, ARSCNView를 UIViewRepresentable로
         감싸 화면에 배치하는 것까지 진행합니다.
 
-        @Image(source: "chapter1.png", alt: "프로젝트 설정 화면")
+        @Image(source: "chapter1.svg", alt: "프로젝트 설정 화면")
 
         @TutorialReference(tutorial: "doc:01-ProjectSetup")
     }
@@ -21,7 +21,7 @@
         ARFaceTrackingConfiguration을 설정하고
         Coordinator(ARSCNViewDelegate)로 얼굴 앵커를 추적합니다.
 
-        @Image(source: "chapter2.png", alt: "얼굴 인식 구현 화면")
+        @Image(source: "chapter2.svg", alt: "얼굴 인식 구현 화면")
 
         @TutorialReference(tutorial: "doc:02-FaceTracking")
     }
@@ -30,7 +30,7 @@
         SCNText 노드를 생성해 얼굴 위에 "Hello" 텍스트를
         3D로 띄워 완성합니다.
 
-        @Image(source: "chapter3.png", alt: "Hello 텍스트 표시 화면")
+        @Image(source: "chapter3.svg", alt: "Hello 텍스트 표시 화면")
 
         @TutorialReference(tutorial: "doc:03-HelloText")
     }

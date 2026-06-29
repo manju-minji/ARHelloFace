@@ -34,11 +34,37 @@
             }
 
             @Step {
-                `Info.plist`에 카메라 사용 권한 키를 추가합니다.
-                **Privacy - Camera Usage Description** 키를 추가하고
-                값으로 `"AR 기능을 위해 카메라를 사용합니다"`를 입력합니다.
+                카메라 사용 권한을 등록합니다. ARKit은 카메라에 접근하므로,
+                이 권한 설명이 없으면 앱이 실행 중 강제 종료(crash)됩니다.
+
+                최신 Xcode(15 이상)에서는 SwiftUI App 프로젝트에
+                `Info.plist` 파일이 따로 만들어지지 않습니다.
+                대신 프로젝트 네비게이터에서 **프로젝트(최상단 파란 아이콘)**를 클릭하고,
+                **TARGETS > ARHelloFace**를 선택한 뒤 상단의 **Info** 탭으로 이동합니다.
+
+                @Image(source: "s1-step3.png", alt: "타깃의 Info 탭 위치")
+            }
+
+            @Step {
+                **Custom iOS Target Properties** 목록 위에 마우스를 올리면 나타나는
+                **`+` 버튼**을 눌러 새 행을 추가합니다.
+                Key 칸에 **Privacy - Camera Usage Description**을 입력하면
+                Xcode가 자동완성으로 채워줍니다.
+
+                이 표시 이름은 내부적으로 `NSCameraUsageDescription` 키에 대응됩니다.
+                Xcode는 사람이 읽기 쉬운 이름으로 보여주지만,
+                실제 `Info.plist` 파일에는 아래처럼 저장됩니다.
 
                 @Code(name: "Info.plist", file: "s1-info-plist.xml")
+            }
+
+            @Step {
+                추가한 행의 Value 칸에
+                `AR 기능을 위해 카메라를 사용합니다`를 입력합니다.
+                이 문구는 앱이 처음 카메라 권한을 요청할 때
+                사용자에게 보여지는 설명 문구가 됩니다.
+
+                @Image(source: "s1-step4.png", alt: "카메라 권한 설명 값 입력")
             }
         }
     }

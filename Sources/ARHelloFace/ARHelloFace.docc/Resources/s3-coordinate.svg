@@ -1,51 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif">
   <defs>
-    <marker id="axis" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/>
-    </marker>
-    <marker id="up" viewBox="0 0 10 10" refX="5" refY="2" markerWidth="9" markerHeight="9" orient="auto">
-      <path d="M5 0 L10 8 L0 8 z" fill="#5B3FE0"/>
-    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#ECEFF7"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#1F2A44" flood-opacity="0.12"/>
+    </filter>
   </defs>
-  <rect x="0" y="0" width="960" height="560" rx="18" fill="#F6F8FB" stroke="#D8DFEA" stroke-width="2"/>
-  <text x="480" y="56" text-anchor="middle" font-size="28" font-weight="700" fill="#16202E">ARFaceAnchor 좌표계와 텍스트 위치</text>
-  <text x="480" y="88" text-anchor="middle" font-size="16" fill="#6B7689">앵커 원점은 얼굴 중앙(코 끝). 텍스트는 Y축으로 올려 머리 위에 둡니다</text>
+  <rect x="0" y="0" width="800" height="480" rx="28" fill="url(#bg)"/>
 
-  <!-- "Hello" text above head -->
-  <rect x="360" y="138" width="240" height="56" rx="12" fill="#EFEAFE" stroke="#7C5CFC" stroke-width="2.5"/>
-  <text x="480" y="175" text-anchor="middle" font-size="24" font-weight="800" fill="#5B3FE0">Hello 👋</text>
+  <!-- floating Hello pill above -->
+  <g filter="url(#soft)">
+    <rect x="306" y="92" width="188" height="68" rx="22" fill="#6366F1"/>
+    <text x="400" y="138" text-anchor="middle" font-size="30" font-weight="800" fill="#FFFFFF">Hello 👋</text>
+  </g>
 
-  <!-- up arrow showing y offset -->
-  <line x1="480" y1="330" x2="480" y2="200" stroke="#5B3FE0" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#up)"/>
-  <rect x="500" y="250" width="150" height="44" rx="9" fill="#FFFFFF" stroke="#7C5CFC" stroke-width="1.8"/>
-  <text x="575" y="278" text-anchor="middle" font-size="15" font-weight="700" fill="#5B3FE0">position.y = 0.15</text>
+  <!-- gentle up arrow (placement) -->
+  <g stroke="#818CF8" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="400" y1="300" x2="400" y2="196"/>
+    <path d="M376 220 L400 192 L424 220"/>
+  </g>
 
-  <!-- simple face -->
-  <ellipse cx="480" cy="400" rx="92" ry="108" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="2.5"/>
-  <circle cx="448" cy="378" r="8" fill="#38445A"/>
-  <circle cx="512" cy="378" r="8" fill="#38445A"/>
-  <path d="M 452 440 Q 480 462 508 440" fill="none" stroke="#38445A" stroke-width="3" stroke-linecap="round"/>
-  <!-- nose tip = origin -->
-  <circle cx="480" cy="410" r="7" fill="#E5484D"/>
-  <text x="480" y="410" dy="-14" text-anchor="middle" font-size="12" font-weight="700" fill="#E5484D">원점 (코 끝)</text>
-
-  <!-- axes from origin -->
-  <!-- Y axis (green, up) -->
-  <line x1="480" y1="410" x2="480" y2="318" stroke="#16A34A" stroke-width="3" marker-end="url(#axis)"/>
-  <text x="494" y="330" font-size="16" font-weight="700" fill="#16A34A">+Y</text>
-  <!-- X axis (red, right) -->
-  <line x1="480" y1="410" x2="600" y2="410" stroke="#E5484D" stroke-width="3" marker-end="url(#axis)"/>
-  <text x="608" y="415" font-size="16" font-weight="700" fill="#E5484D">+X</text>
-  <!-- Z axis (blue, toward viewer / down-left for 3D feel) -->
-  <line x1="480" y1="410" x2="392" y2="474" stroke="#2563EB" stroke-width="3" marker-end="url(#axis)"/>
-  <text x="372" y="492" font-size="16" font-weight="700" fill="#2563EB">+Z</text>
-
-  <!-- legend -->
-  <rect x="690" y="360" width="220" height="120" rx="12" fill="#FFFFFF" stroke="#C7D0DE" stroke-width="1.5"/>
-  <text x="800" y="388" text-anchor="middle" font-size="14" font-weight="700" fill="#16202E">좌표축</text>
-  <circle cx="712" cy="412" r="6" fill="#E5484D"/><text x="726" y="417" font-size="13" fill="#38445A">X · 얼굴 기준 오른쪽</text>
-  <circle cx="712" cy="436" r="6" fill="#16A34A"/><text x="726" y="441" font-size="13" fill="#38445A">Y · 위쪽(머리 방향)</text>
-  <circle cx="712" cy="460" r="6" fill="#2563EB"/><text x="726" y="465" font-size="13" fill="#38445A">Z · 얼굴 정면 방향</text>
-
-  <text x="300" y="540" text-anchor="middle" font-size="13" fill="#9AA3B2">단위는 미터(m) · 0.15 ≈ 머리 위 15cm</text>
+  <!-- face -->
+  <g filter="url(#soft)">
+    <path d="M400 300
+             C448 300 482 338 482 388
+             C482 392 482 392 482 392
+             L318 392
+             C318 392 318 392 318 388
+             C318 338 352 300 400 300 Z"
+          fill="#FFFFFF" stroke="#E2E7F2" stroke-width="2"/>
+  </g>
+  <circle cx="374" cy="356" r="8" fill="#384256"/>
+  <circle cx="426" cy="356" r="8" fill="#384256"/>
 </svg>
